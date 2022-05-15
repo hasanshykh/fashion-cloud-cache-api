@@ -8,7 +8,7 @@ export const dbConfig: any = {
   test: {
     mongodbConnectionUri: 'mongodb://localhost/fashion-cloud-db-test',
     shouldRefreshDB: true,
-    cacheTimeToLive: 60, // 60 seconds
+    cacheTimeToLive: 3, // 3 seconds
     cacheLimit: 3,
   },
   staging: {

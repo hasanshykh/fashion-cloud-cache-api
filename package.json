@@ -12,7 +12,7 @@
     "build-ts": "tsc",
     "serve": "node dist/server.js",
     "start": "npm run build-ts && node dist/server.js",
-    "test": "jest --coverage --verbose"
+    "test": "jest --detectOpenHandles --coverage --verbose"
   },
   "dependencies": {
     "dotenv": "^16.0.1",
