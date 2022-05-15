@@ -1,6 +1,7 @@
 import express from 'express';
+import { CacheRouter } from './controllers';
 
 const AppRouter: express.Router = express.Router();
-// Add routes here
+AppRouter.use('/cache', CacheRouter);
 
 export { AppRouter };
