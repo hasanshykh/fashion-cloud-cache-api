@@ -14,5 +14,7 @@ CacheRouter.put('/:key', [
   validator(CacheValidation.cacheBody, 'body'),
   asyncWrapper(CacheController.updateCache),
 ]);
+CacheRouter.delete('/:key', CacheController.deleteCache);
+CacheRouter.delete('/', CacheController.deleteAllCache);
 
 export { CacheRouter };

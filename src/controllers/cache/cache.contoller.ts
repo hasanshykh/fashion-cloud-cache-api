@@ -1,3 +1,4 @@
+import { DeleteResult } from 'mongodb';
 import { Request, Response } from 'express';
 import { CacheService } from '../../services';
 import { ICache } from '../../interfaces';
@@ -27,8 +28,31 @@ const updateCache = async (_req: Request, res: Response): Promise<void> => {
   }
 }
 
+const deleteCache = async (_req: Request, res: Response): Promise<void> => {
+  const { key } = _req.params;
+  const result: DeleteResult = await CacheService.deleteCache(key);
+
+  if (!result.deletedCount) {
+    new NotFoundResponse(res, 'cache with this key not found in db');
+  } else {
+    new SuccessResponse(res, 'cache with this key has been successfully deleted from db');
+  }
+}
+
+const deleteAllCache = async (_req: Request, res: Response): Promise<void> => {
+  const result: DeleteResult = await CacheService.deleteAllCache();
+
+  if (!result.deletedCount) {
+    new NotFoundResponse(res, 'No cache keys found in db');
+  } else {
+    new SuccessResponse(res, 'All cache keys has been successfully deleted from db');
+  }
+}
+
 export const CacheController = {
   getCacheKeys,
   createCache,
   updateCache,
+  deleteCache,
+  deleteAllCache,
 };

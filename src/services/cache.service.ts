@@ -1,4 +1,4 @@
-import { Document } from 'mongodb';
+import { DeleteResult, Document } from 'mongodb';
 import { ICache } from '../interfaces';
 import { Cache } from '../models';
 
@@ -30,8 +30,18 @@ export const updateCache = async (key: string, value: string): Promise<ICache> =
   return cache as ICache;
 }
 
+export const deleteCache = async (key: string): Promise<DeleteResult> => {
+  return Cache.deleteOne({ key });
+}
+
+export const deleteAllCache = async (): Promise<DeleteResult> => {
+  return Cache.deleteMany();
+}
+
 export const CacheService = {
   getCacheKeys,
   createCache,
   updateCache,
+  deleteCache,
+  deleteAllCache,
 };
