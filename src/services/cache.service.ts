@@ -1,11 +1,18 @@
+import { Document } from 'mongodb';
 import { ICache } from '../interfaces';
 import { Cache } from '../models';
 
 export const createCache = async (key: string, value: string): Promise<ICache> => {
-  const cache = Cache.create({ key, value });
-  return cache;
+  let cache: Document = await Cache.findOne({ key });
+
+  if (cache) {
+    cache.value = value;
+    await cache.save();
+  } else {
+    cache = Cache.create({ key, value });
+  }
+
+  return cache as ICache;
 }
 
-export const CacheService = {
-  createCache,
-};
+export const CacheService = { createCache };
