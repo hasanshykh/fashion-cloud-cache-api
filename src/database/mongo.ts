@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 import { logger } from '../util';
 import { appConfig, dbConfig } from '../config';
+import { Cache } from '../models';
 
 export const databaseConnection = async (): Promise<void> => {
   const config = dbConfig[appConfig.environment];
@@ -15,5 +16,7 @@ export const databaseConnection = async (): Promise<void> => {
 }
 
 const refreshDatabase = async (): Promise<void> => {
-  // write code to refresh database
+  await Cache.deleteMany().exec((): void => {
+    logger.info('DB_INFO', 'database refreshed successully');
+  });
 }
