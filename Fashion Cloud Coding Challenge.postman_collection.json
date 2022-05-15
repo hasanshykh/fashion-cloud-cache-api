@@ -1,0 +1,170 @@
+{
+	"info": {
+		"_postman_id": "b4b196d5-374e-4e58-8236-f316e7d3d339",
+		"name": "Fashion Cloud Coding Challenge",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get all cache keys",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/cache",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"cache"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get a cache",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/cache/1",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"cache",
+						"1"
+					]
+				},
+				"description": "This api gets a specific cache key stored in database"
+			},
+			"response": []
+		},
+		{
+			"name": "Create a cache",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"value\": \"xyz data for cache\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/cache/1",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"cache",
+						"1"
+					]
+				},
+				"description": "This api creates a cache key and stores in database"
+			},
+			"response": []
+		},
+		{
+			"name": "Update a cache",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"value\": \"xyz data for cache\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/cache/2",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"cache",
+						"2"
+					]
+				},
+				"description": "This api updates a cache key and stores in database"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a cache",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/cache/1",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"cache",
+						"1"
+					]
+				},
+				"description": "Deletes a cache key stored in database"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete all cache",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/cache",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"cache"
+					]
+				},
+				"description": "Deletes all cache keys stored in database"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:3000"
+		}
+	]
+}
