@@ -1,6 +1,5 @@
 import express from 'express';
-import { validator } from '../../middleware';
-import { asyncWrapper } from '../../middleware/async-wrapper';
+import { validator, asyncWrapper } from '../../middleware';
 import { CacheController } from './cache.contoller';
 import { CacheValidation } from './cache.validator';
 

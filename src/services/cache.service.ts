@@ -15,6 +15,12 @@ export const getCache = async (key: string): Promise<string | ICache> => {
   if (!cache) {
     cache = await Cache.create({ key, value: randomValue });
     isCacheMissed = true;
+  } else {
+    if (Date.parse(cache.updatedAt) + (cache.timeToLive * 1000) < Date.now()) {
+      cache.value = randomValue;
+      isCacheMissed = true;
+    }
+    await cache.save();
   }
   logger.info('CACHE_INFO', isCacheMissed ? 'cache miss' : 'cache hit');
 
