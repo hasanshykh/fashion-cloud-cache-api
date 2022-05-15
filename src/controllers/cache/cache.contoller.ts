@@ -3,6 +3,11 @@ import { CacheService } from '../../services';
 import { ICache } from '../../interfaces';
 import { SuccessResponse } from '../../util';
 
+const getCacheKeys = async (_req: Request, res: Response): Promise<void> => {
+  const result: ICache[] = await CacheService.getCacheKeys();
+  new SuccessResponse(res, 'success', result);
+}
+
 const createCache = async (_req: Request, res: Response): Promise<void> => {
   const { key } = _req.params;
   const { value } = _req.body;
@@ -10,4 +15,7 @@ const createCache = async (_req: Request, res: Response): Promise<void> => {
   new SuccessResponse(res, 'cache with this key has been successfully created in db', result);
 }
 
-export const CacheController = { createCache };
+export const CacheController = {
+  getCacheKeys,
+  createCache,
+};
