@@ -10,5 +10,9 @@ CacheRouter.post('/:key', [
   validator(CacheValidation.cacheBody, 'body'),
   asyncWrapper(CacheController.createCache),
 ]);
+CacheRouter.put('/:key', [
+  validator(CacheValidation.cacheBody, 'body'),
+  asyncWrapper(CacheController.updateCache),
+]);
 
 export { CacheRouter };

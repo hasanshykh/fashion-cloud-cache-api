@@ -19,7 +19,19 @@ export const createCache = async (key: string, value: string): Promise<ICache> =
   return cache as ICache;
 }
 
+export const updateCache = async (key: string, value: string): Promise<ICache> => {
+  let cache: Document = await Cache.findOne({ key });
+
+  if (cache) {
+    cache.value = value;
+    await cache.save();
+  }
+
+  return cache as ICache;
+}
+
 export const CacheService = {
   getCacheKeys,
   createCache,
+  updateCache,
 };
