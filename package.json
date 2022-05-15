@@ -11,7 +11,8 @@
     "build": "npm run build-ts",
     "build-ts": "tsc",
     "serve": "node dist/server.js",
-    "start": "npm run build-ts && node dist/server.js"
+    "start": "npm run build-ts && node dist/server.js",
+    "test": "jest --coverage --verbose"
   },
   "dependencies": {
     "dotenv": "^16.0.1",
@@ -25,8 +26,13 @@
     "@types/mongoose": "^5.11.97",
     "@types/node": "^14.18.17",
     "@types/joi": "^14.3.4",
+    "@types/jest": "^27.5.1",
+    "@types/supertest": "^2.0.12",
     "@typescript-eslint/eslint-plugin": "^3.10.1",
     "@typescript-eslint/parser": "^3.10.1",
+    "jest": "^28.1.0",
+    "ts-jest": "^28.0.2",
+    "supertest": "^6.2.3",
     "ts-node": "^10.7.0",
     "typescript": "^4.6.4"
   }

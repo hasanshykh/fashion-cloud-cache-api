@@ -15,7 +15,7 @@ const CacheSchema = new mongoose.Schema(
     },
     value: {
       type: String,
-      default: randomString(),
+      default: randomString(), //will generate a random string as a default value
     },
     timeToLive: {
       type: Number,
