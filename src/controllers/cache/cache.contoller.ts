@@ -9,6 +9,12 @@ const getCacheKeys = async (_req: Request, res: Response): Promise<void> => {
   new SuccessResponse(res, 'success', result);
 }
 
+const getCache = async (_req: Request, res: Response): Promise<void> => {
+  const { key } = _req.params;
+  const result: string | ICache = await CacheService.getCache(key);
+  new SuccessResponse(res, 'success', result);
+}
+
 const createCache = async (_req: Request, res: Response): Promise<void> => {
   const { key } = _req.params;
   const { value } = _req.body;
@@ -51,6 +57,7 @@ const deleteAllCache = async (_req: Request, res: Response): Promise<void> => {
 
 export const CacheController = {
   getCacheKeys,
+  getCache,
   createCache,
   updateCache,
   deleteCache,
